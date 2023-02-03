@@ -12,13 +12,16 @@ $allowed_jsons = array(
 );
 
 $requested = $_SERVER['REQUEST_URI'];
+$parsed_requested = str_replace('/mobi-api/', '', $requested);
 
-if (!in_array($requested, $allowed_jsons)) {
+if (!in_array($parsed_requested, $allowed_jsons)) {
     http_response_code(404);
     // echo '{"error":"Not Found"}';
     echo $requested;
     exit();
 }
+
+echo 'ok';
 
 // $request_headers        = apache_request_headers();
 // $http_origin            = $request_headers['Origin'];
