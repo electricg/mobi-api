@@ -11,32 +11,35 @@ $allowed_jsons = array(
     'free_bike_status.json',
 );
 
+$folder = '/mobi-api/';
+
+$remote_url = 'https://vancouver-gbfs.smoove.pro/gbfs/2/en/';
+
+$allowed_http_origins   = array(
+    'http://localhost:8080',
+    'https://giulia.dev',
+    'https://giugee.com/',
+    'https://electricg.github.io',
+);
+
 $requested = $_SERVER['REQUEST_URI'];
-$parsed_requested = str_replace('/mobi-api/', '', $requested);
+$parsed_requested = str_replace($folder, '', $requested);
 
 if (!in_array($parsed_requested, $allowed_jsons)) {
     http_response_code(404);
-    // echo '{"error":"Not Found"}';
-    echo $requested;
+    echo '{"error":"Not Found"}';
     exit();
 }
 
-echo 'ok';
+$request_headers        = apache_request_headers();
+$http_origin            = $request_headers['Origin'];
 
-// $request_headers        = apache_request_headers();
-// $http_origin            = $request_headers['Origin'];
-// $allowed_http_origins   = array(
-//     'http://localhost:8080',
-//     'https://giulia.dev',
-//     'https://giugee.com/',
-//     'https://electricg.github.io',
-// );
-// if (in_array($http_origin, $allowed_http_origins)) {  
-//     @header('Access-Control-Allow-Origin: ' . $http_origin);
-// }
-// // header('Access-Control-Allow-Origin: *');
+if (in_array($http_origin, $allowed_http_origins)) {  
+    @header('Access-Control-Allow-Origin: ' . $http_origin);
+}
+// header('Access-Control-Allow-Origin: *');
 
-// $url = 'https://vancouver-gbfs.smoove.pro/gbfs/2/en/' . $json;
-// echo file_get_contents($url);
+$url = $remote_url . $parsed_requested;
+echo file_get_contents($url);
 
 ?>
