@@ -2,7 +2,7 @@
 
 function get($json) {
 
-    header('Content-Type: application/json');
+    header('Content-Type: application/json; charset=utf-8');
 
     $url = "https://vancouver-gbfs.smoove.pro/gbfs/2/en/" . $json;
 
