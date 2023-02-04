@@ -12,7 +12,6 @@ $allowed_jsons = array(
     'free_bike_status.json',
 );
 $allowed_http_origins = array(
-    'http://localhost:8080',
     'https://giulia.dev',
     'https://giugee.com/',
     'https://electricg.github.io',
@@ -29,7 +28,7 @@ if (!in_array($parsed_requested, $allowed_jsons)) {
 $request_headers = apache_request_headers();
 $http_origin = $request_headers['Origin'];
 
-if (in_array($http_origin, $allowed_http_origins)) {
+if (in_array($http_origin, $allowed_http_origins) || preg_match("/^http:\/\/localhost(:\d+)?$/", $http_origin)) {
     @header('Access-Control-Allow-Origin: ' . $http_origin);
 }
 
