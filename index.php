@@ -21,6 +21,8 @@ $request_headers = apache_request_headers();
 $http_origin = $request_headers['Origin'];
 
 if (in_array($http_origin, $allowed_http_origins) || preg_match("/^http:\/\/localhost(:\d+)?$/", $http_origin)) {
+    // the @ suppresses the error
+    // https://stackoverflow.com/a/10034283/471720
     @header('Access-Control-Allow-Origin: ' . $http_origin);
 }
 
