@@ -3,16 +3,16 @@ header('Content-Type: application/json; charset=utf-8');
 
 $REMOTE_URL = 'https://vancouver-gbfs.smoove.pro/gbfs/2/en/';
 $ALLOWED_JSONS = array(
-    'gbfs_versions.json',
-    'system_information.json',
+    // 'gbfs_versions.json',
+    // 'system_information.json',
     'station_information.json',
     'station_status.json',
-    'vehicle_types.json',
-    'free_bike_status.json',
+    // 'vehicle_types.json',
+    // 'free_bike_status.json',
 );
 $ALLOWED_HTTP_ORIGINS = array(
-    'https://giulia.dev',
-    'https://giugee.com',
+    // 'https://giulia.dev',
+    // 'https://giugee.com',
     'https://electricg.github.io',
 );
 $IS_LOCALHOST_ALLOWED = true;
