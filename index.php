@@ -11,7 +11,7 @@ $ALLOWED_JSONS = array(
     // 'free_bike_status.json',
 );
 $ALLOWED_HTTP_ORIGINS = array(
-    // 'https://giulia.dev',
+    'https://mobi.giulia.dev',
     // 'https://giugee.com',
     'https://electricg.github.io',
 );
